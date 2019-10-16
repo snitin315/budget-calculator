@@ -43,16 +43,10 @@ let UIcontroller = (function(){
 
 let controller = (function(budgetCtrl,UIctrl){
 
-    let DOM = UIctrl.getDOMstrings();
-    let ctrlAddItem = function() {
-     
-        // Get the input Data
 
-        let input = UIctrl.getInput();
-        console.log(input);
-
-    }
-
+    let setupEventListeners = function(){
+    
+    let DOM = UIctrl.getDOMstrings();    
     document.querySelector(DOM.inputBtn).addEventListener('click',ctrlAddItem);
 
     document.addEventListener('keypress', function(event){
@@ -61,4 +55,26 @@ let controller = (function(budgetCtrl,UIctrl){
        }
     })
 
+    }
+
+   
+    let ctrlAddItem = function() {
+     
+        // Get the input Data
+
+        let input = UIctrl.getInput();
+        console.log(input);
+
+    }
+    
+    return {
+        init : function(){
+            console.log('Application has started');
+            setupEventListeners();
+        }
+    }
+    
+
 })(budgetController,UIcontroller);
+
+controller.init();
