@@ -107,6 +107,18 @@ let UIcontroller = (function(){
         
         },
 
+        clearFields : function(){
+            let fields , fieldsArr;
+
+           fields = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
+           fieldsArr = Array.prototype.slice.call(fields);
+           fieldsArr.forEach(function(current, index, array){
+              current.value = "";
+           });
+
+           fieldsArr[0].focus()
+        },
+
         getDOMstrings : function(){
             return DOMstrings
         }
@@ -149,6 +161,9 @@ let controller = (function(budgetCtrl,UIctrl){
 
         //add item to ui 
         UIctrl.addListItem(newItem, input.type)
+
+        //clear the fields 
+        UIctrl.clearFields();
 
     }
     
